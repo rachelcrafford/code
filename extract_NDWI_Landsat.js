@@ -1,5 +1,5 @@
 
-// This script generates raster files of median NDWI during a Feb-May time period from 2001-2021.
+// This script generates raster files of mean NDWI during a Feb-May time period from 2001-2021.
 // Does not include edits to filter out years without sufficient satellite imagery. 
 // Set the area of interest (AOI)
 var AOI = geometry;
@@ -41,7 +41,7 @@ for (var year = startYear; year <= endYear; year++) {
     .map(prepSrL8)
     .map(addNDWI)
     .select('NDWI')
-    .median()  // Get the median NDWI for this period in the given year
+    .mean()  // Get the mean NDWI for this period in the given year
     .set('year', year);  // Set the year as metadata for later use
   
   // Add the NDWI image for this year to the collection
